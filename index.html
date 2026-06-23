@@ -1,8 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
   <title>Task · WhatsApp Form</title>
   <!-- Font Awesome (optional) -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
@@ -20,7 +21,8 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      padding: 1.5rem;
+      padding: 1rem;
+      /* Reduced padding for mobile */
     }
 
     .form-card {
@@ -28,8 +30,10 @@
       width: 100%;
       background: rgba(255, 255, 255, 0.95);
       backdrop-filter: blur(4px);
-      border-radius: 2.5rem;
-      padding: 2.2rem 2.5rem;
+      border-radius: 2rem;
+      /* Slightly smaller on mobile */
+      padding: 1.8rem 1.5rem;
+      /* Adjusted padding */
       box-shadow: 0 25px 45px -12px rgba(0, 0, 0, 0.7), 0 2px 8px rgba(0, 0, 0, 0.2);
       transition: transform 0.2s ease;
       border: 1px solid rgba(255, 255, 255, 0.3);
@@ -40,7 +44,8 @@
     }
 
     h1 {
-      font-size: 2rem;
+      font-size: 1.8rem;
+      /* Slightly smaller on mobile */
       font-weight: 600;
       color: #1e2f3f;
       display: flex;
@@ -48,29 +53,33 @@
       gap: 0.6rem;
       margin-bottom: 0.3rem;
       letter-spacing: -0.5px;
+      flex-wrap: wrap;
+      /* Allow wrapping on very small screens */
     }
 
     h1 i {
       color: #25D366;
-      font-size: 2rem;
+      font-size: 1.8rem;
       filter: drop-shadow(0 2px 4px rgba(37, 211, 102, 0.3));
     }
 
     .subhead {
       color: #4b5f6e;
       font-weight: 400;
-      font-size: 0.95rem;
+      font-size: 0.9rem;
       border-left: 4px solid #25D366;
       padding-left: 1rem;
-      margin-bottom: 2rem;
+      margin-bottom: 1.8rem;
       background: #eef4f8;
       border-radius: 0 20px 20px 0;
-      padding: 0.6rem 1.2rem;
+      padding: 0.5rem 1rem;
       display: inline-block;
+      width: auto;
+      max-width: 100%;
     }
 
     .form-group {
-      margin-bottom: 1.6rem;
+      margin-bottom: 1.4rem;
     }
 
     label {
@@ -80,18 +89,21 @@
       font-weight: 500;
       color: #1d2e3b;
       margin-bottom: 0.5rem;
-      font-size: 0.95rem;
+      font-size: 0.9rem;
     }
 
     label i {
       color: #25D366;
       width: 1.2rem;
-      font-size: 1rem;
+      font-size: 0.95rem;
     }
 
-    input, textarea, select {
+    input,
+    textarea,
+    select {
       width: 100%;
-      padding: 0.8rem 1.2rem;
+      padding: 0.75rem 1rem;
+      /* Slightly smaller padding for mobile */
       border: 1.5px solid #dce6ed;
       border-radius: 1.8rem;
       font-size: 1rem;
@@ -99,18 +111,32 @@
       transition: all 0.15s ease;
       outline: none;
       color: #1a2b37;
+      -webkit-appearance: none;
+      /* Remove default iOS styling */
+      appearance: none;
     }
 
-    input:focus, textarea:focus, select:focus {
+    /* Fix for iOS input styling */
+    input[type="date"] {
+      -webkit-appearance: none;
+      appearance: none;
+      min-height: 48px;
+      /* Better touch target */
+    }
+
+    input:focus,
+    textarea:focus,
+    select:focus {
       border-color: #25D366;
       box-shadow: 0 0 0 4px rgba(37, 211, 102, 0.15);
       background: #ffffff;
     }
 
     textarea {
-      min-height: 100px;
+      min-height: 90px;
       resize: vertical;
       border-radius: 1.8rem;
+      padding: 0.75rem 1rem;
     }
 
     .row-duo {
@@ -120,27 +146,32 @@
     }
 
     .row-duo .form-group {
-      flex: 1 1 180px;
+      flex: 1 1 160px;
+      min-width: 140px;
+      /* Minimum width for mobile */
     }
 
     .priority-group {
       display: inline-flex;
       flex-wrap: nowrap;
-      gap: 0.6rem;
+      gap: 0.4rem;
       align-items: center;
       background: #f0f5fa;
-      padding: 0.2rem 0.8rem 0.2rem 0.8rem;
+      padding: 0.15rem 0.6rem 0.15rem 0.6rem;
       border-radius: 60px;
       border: 1px solid #dce6ed;
       width: auto;
+      overflow-x: auto;
+      /* Allow horizontal scroll if needed */
+      -webkit-overflow-scrolling: touch;
     }
 
     .priority-option {
       display: inline-flex;
       align-items: center;
-      gap: 0.25rem;
+      gap: 0.2rem;
       background: transparent;
-      padding: 0.2rem 0.6rem 0.2rem 0.2rem;
+      padding: 0.15rem 0.4rem 0.15rem 0.15rem;
       border-radius: 40px;
       transition: 0.1s;
       white-space: nowrap;
@@ -148,8 +179,9 @@
 
     .priority-option input[type="radio"] {
       appearance: none;
-      width: 16px;
-      height: 16px;
+      width: 18px;
+      /* Slightly larger for mobile touch */
+      height: 18px;
       border: 2px solid #b6c9d6;
       border-radius: 50%;
       margin: 0;
@@ -158,6 +190,8 @@
       transition: 0.1s;
       flex-shrink: 0;
       cursor: pointer;
+      min-height: 18px;
+      min-width: 18px;
     }
 
     .priority-option input[type="radio"]:checked {
@@ -168,7 +202,7 @@
 
     .priority-option label {
       font-weight: 450;
-      font-size: 0.9rem;
+      font-size: 0.85rem;
       color: #1d2e3b;
       cursor: pointer;
       margin: 0;
@@ -179,13 +213,13 @@
       display: flex;
       align-items: center;
       flex-wrap: wrap;
-      gap: 0.8rem 1.2rem;
+      gap: 0.6rem 1rem;
     }
 
     .priority-label {
       font-weight: 500;
       color: #1d2e3b;
-      font-size: 0.95rem;
+      font-size: 0.9rem;
       display: flex;
       align-items: center;
       gap: 0.4rem;
@@ -199,8 +233,8 @@
       background: #25D366;
       color: white;
       border: none;
-      padding: 1rem 1.8rem;
-      font-size: 1.2rem;
+      padding: 0.9rem 1.5rem;
+      font-size: 1.1rem;
       font-weight: 600;
       border-radius: 60px;
       width: 100%;
@@ -213,10 +247,14 @@
       box-shadow: 0 8px 20px -8px rgba(37, 211, 102, 0.4);
       margin-top: 0.8rem;
       letter-spacing: 0.3px;
+      min-height: 56px;
+      /* Better touch target */
+      touch-action: manipulation;
+      /* Optimize for touch */
     }
 
     .btn-whatsapp i {
-      font-size: 1.6rem;
+      font-size: 1.4rem;
     }
 
     .btn-whatsapp:hover {
@@ -230,16 +268,17 @@
     }
 
     .footnote {
-      margin-top: 1.8rem;
+      margin-top: 1.5rem;
       text-align: center;
-      font-size: 0.8rem;
+      font-size: 0.75rem;
       color: #6b7f8d;
       border-top: 1px solid #e2ebf2;
-      padding-top: 1.2rem;
+      padding-top: 1rem;
       display: flex;
       justify-content: center;
       align-items: center;
       gap: 0.4rem;
+      flex-wrap: wrap;
     }
 
     .footnote i {
@@ -249,19 +288,20 @@
     .preview-box {
       background: #f0f5fa;
       border-radius: 16px;
-      padding: 1rem 1.2rem;
+      padding: 0.8rem 1rem;
       margin-top: 0.5rem;
       border-left: 4px solid #25D366;
       font-family: 'Courier New', monospace;
-      font-size: 0.85rem;
+      font-size: 0.8rem;
       white-space: pre-wrap;
       color: #1d2e3b;
-      max-height: 200px;
+      max-height: 180px;
       overflow-y: auto;
+      -webkit-overflow-scrolling: touch;
     }
 
     .preview-label {
-      font-size: 0.8rem;
+      font-size: 0.75rem;
       color: #4b5f6e;
       display: flex;
       align-items: center;
@@ -269,220 +309,493 @@
       margin-bottom: 0.3rem;
     }
 
+    /* Phone number input styling */
+    .phone-input-wrapper {
+      position: relative;
+    }
+
+    .phone-input-wrapper input {
+      padding-left: 3.2rem;
+    }
+
+    .phone-prefix {
+      position: absolute;
+      left: 1.2rem;
+      top: 50%;
+      transform: translateY(-50%);
+      color: #6b7f8d;
+      font-weight: 500;
+      font-size: 0.95rem;
+      pointer-events: none;
+    }
+
+    .phone-hint {
+      color: #6b7f8d;
+      display: block;
+      margin-top: 0.3rem;
+      padding-left: 0.5rem;
+      font-size: 0.75rem;
+    }
+
+    .phone-hint i {
+      color: #25D366;
+      margin-right: 0.3rem;
+    }
+
+    /* Mobile Responsive Styles */
     @media (max-width: 480px) {
+      body {
+        padding: 0.8rem;
+        align-items: flex-start;
+        padding-top: 1.5rem;
+      }
+
       .form-card {
-        padding: 1.8rem 1.2rem;
+        padding: 1.2rem 1rem;
+        border-radius: 1.5rem;
       }
+
       h1 {
-        font-size: 1.7rem;
+        font-size: 1.4rem;
+        gap: 0.4rem;
       }
+
+      h1 i {
+        font-size: 1.4rem;
+      }
+
+      .subhead {
+        font-size: 0.8rem;
+        padding: 0.4rem 0.8rem;
+        margin-bottom: 1.2rem;
+      }
+
+      .form-group {
+        margin-bottom: 1rem;
+      }
+
+      label {
+        font-size: 0.85rem;
+        margin-bottom: 0.4rem;
+      }
+
+      label i {
+        font-size: 0.85rem;
+        width: 1rem;
+      }
+
+      input,
+      textarea,
+      select {
+        padding: 0.65rem 0.9rem;
+        font-size: 0.95rem;
+        border-radius: 1.5rem;
+        min-height: 44px;
+        /* Better touch targets */
+      }
+
+      textarea {
+        min-height: 80px;
+        padding: 0.65rem 0.9rem;
+      }
+
       .row-duo {
         flex-direction: column;
-        gap: 0;
+        gap: 0.5rem;
       }
+
+      .row-duo .form-group {
+        flex: 1 1 auto;
+        min-width: unset;
+      }
+
       .priority-group {
-        flex-wrap: nowrap;
-        padding: 0.2rem 0.6rem;
-        gap: 0.3rem;
+        padding: 0.1rem 0.4rem;
+        gap: 0.2rem;
+        border-radius: 40px;
+        width: 100%;
+        justify-content: center;
       }
+
       .priority-option {
         padding: 0.1rem 0.3rem 0.1rem 0.1rem;
       }
+
+      .priority-option input[type="radio"] {
+        width: 16px;
+        height: 16px;
+        min-height: 16px;
+        min-width: 16px;
+      }
+
       .priority-option label {
         font-size: 0.8rem;
+      }
+
+      .priority-group-wrapper {
+        gap: 0.4rem 0.8rem;
+      }
+
+      .priority-label {
+        font-size: 0.85rem;
+      }
+
+      .btn-whatsapp {
+        padding: 0.8rem 1.2rem;
+        font-size: 1rem;
+        min-height: 50px;
+        border-radius: 50px;
+      }
+
+      .btn-whatsapp i {
+        font-size: 1.2rem;
+      }
+
+      .footnote {
+        font-size: 0.7rem;
+        margin-top: 1.2rem;
+        padding-top: 0.8rem;
+      }
+
+      .preview-box {
+        font-size: 0.75rem;
+        padding: 0.6rem 0.8rem;
+        max-height: 150px;
+      }
+
+      .preview-label {
+        font-size: 0.7rem;
+      }
+
+      .phone-prefix {
+        left: 1rem;
+        font-size: 0.85rem;
+      }
+
+      .phone-input-wrapper input {
+        padding-left: 2.8rem;
+      }
+    }
+
+    /* Extra small devices */
+    @media (max-width: 380px) {
+      .form-card {
+        padding: 1rem 0.8rem;
+      }
+
+      h1 {
+        font-size: 1.2rem;
+      }
+
+      input,
+      textarea,
+      select {
+        padding: 0.55rem 0.8rem;
+        font-size: 0.9rem;
+        min-height: 40px;
+      }
+
+      .priority-option label {
+        font-size: 0.7rem;
+      }
+
+      .priority-option input[type="radio"] {
+        width: 14px;
+        height: 14px;
+        min-height: 14px;
+        min-width: 14px;
+      }
+
+      .btn-whatsapp {
+        font-size: 0.9rem;
+        padding: 0.7rem 1rem;
+        min-height: 44px;
+      }
+    }
+
+    /* Landscape phone mode */
+    @media (max-height: 600px) and (orientation: landscape) {
+      body {
+        align-items: flex-start;
+        padding-top: 1rem;
+      }
+
+      .form-card {
+        padding: 1rem 1.2rem;
+        max-width: 550px;
+      }
+
+      .form-group {
+        margin-bottom: 0.7rem;
+      }
+
+      textarea {
+        min-height: 60px;
+      }
+
+      h1 {
+        font-size: 1.4rem;
+        margin-bottom: 0;
+      }
+
+      .subhead {
+        margin-bottom: 1rem;
+        padding: 0.3rem 0.8rem;
+        font-size: 0.75rem;
+      }
+
+      .btn-whatsapp {
+        min-height: 44px;
+        padding: 0.6rem 1rem;
+        font-size: 0.95rem;
+      }
+    }
+
+    /* Touch feedback for mobile */
+    @media (hover: none) {
+      .btn-whatsapp:hover {
+        transform: none;
+        background: #25D366;
+      }
+
+      .btn-whatsapp:active {
+        transform: scale(0.96);
+        background: #1fa855;
+      }
+
+      .priority-option input[type="radio"]:active {
+        transform: scale(0.9);
+      }
+    }
+
+    /* Fix for iOS Safari */
+    @supports (-webkit-touch-callout: none) {
+
+      input,
+      textarea,
+      select,
+      button {
+        font-size: 16px;
+        /* Prevents iOS zoom on focus */
       }
     }
   </style>
 </head>
+
 <body>
 
-<div class="form-card">
-  <h1>
-    <i class="fab fa-whatsapp"></i> Task · WhatsApp
-  </h1>
-  <div class="subhead">
-    <i class="fas fa-arrow-right" style="margin-right: 8px;"></i> Fill & send — clean format for WhatsApp
-  </div>
-
-  <form id="taskForm" onsubmit="sendToWhatsApp(event)">
-    <!-- Task title -->
-    <div class="form-group">
-      <label for="taskTitle"><i class="fas fa-tag"></i> Task title</label>
-      <input type="text" id="taskTitle" placeholder="e.g. Design homepage" required>
+  <div class="form-card">
+    <h1>
+      <i class="fab fa-whatsapp"></i> Task · WhatsApp
+    </h1>
+    <div class="subhead">
+      <i class="fas fa-arrow-right" style="margin-right: 8px;"></i> Fill & send — clean format for WhatsApp
     </div>
 
-    <!-- Description -->
-    <div class="form-group">
-      <label for="taskDesc"><i class="fas fa-align-left"></i> Description</label>
-      <textarea id="taskDesc" placeholder="Describe the task in detail …" required></textarea>
-    </div>
-
-    <!-- Due date + priority (row) -->
-    <div class="row-duo">
+    <form id="taskForm" onsubmit="sendToWhatsApp(event)">
+      <!-- Task title -->
       <div class="form-group">
-        <label for="dueDate"><i class="fas fa-calendar-alt"></i> Due date</label>
-        <input type="date" id="dueDate" required>
+        <label for="taskTitle"><i class="fas fa-tag"></i> Task title</label>
+        <input type="text" id="taskTitle" placeholder="e.g. Design homepage" required>
       </div>
+
+      <!-- Description -->
       <div class="form-group">
-        <div class="priority-group-wrapper">
-          <span class="priority-label">
-            <i class="fas fa-flag"></i> Priority
-          </span>
-          <span class="priority-group">
-            <span class="priority-option">
-              <input type="radio" name="priority" value="High" id="high" checked>
-              <label for="high">High</label>
+        <label for="taskDesc"><i class="fas fa-align-left"></i> Description</label>
+        <textarea id="taskDesc" placeholder="Describe the task in detail …" required></textarea>
+      </div>
+
+      <!-- Due date + priority (row) -->
+      <div class="row-duo">
+        <div class="form-group">
+          <label for="dueDate"><i class="fas fa-calendar-alt"></i> Due date</label>
+          <input type="date" id="dueDate" required>
+        </div>
+        <div class="form-group">
+          <div class="priority-group-wrapper">
+            <span class="priority-label">
+              <i class="fas fa-flag"></i> Priority
             </span>
-            <span class="priority-option">
-              <input type="radio" name="priority" value="Medium" id="medium">
-              <label for="medium">Medium</label>
+            <span class="priority-group">
+              <span class="priority-option">
+                <input type="radio" name="priority" value="High" id="high" checked>
+                <label for="high">High</label>
+              </span>
+              <span class="priority-option">
+                <input type="radio" name="priority" value="Medium" id="medium">
+                <label for="medium">Medium</label>
+              </span>
+              <span class="priority-option">
+                <input type="radio" name="priority" value="Low" id="low">
+                <label for="low">Low</label>
+              </span>
             </span>
-            <span class="priority-option">
-              <input type="radio" name="priority" value="Low" id="low">
-              <label for="low">Low</label>
-            </span>
-          </span>
+          </div>
         </div>
       </div>
+
+      <!-- Assignee (optional) -->
+      <div class="form-group">
+        <label for="assignee"><i class="fas fa-user-check"></i> Assignee (optional)</label>
+        <input type="text" id="assignee" placeholder="e.g. Maria or @team">
+      </div>
+
+      <!-- Phone Number with country code -->
+      <div class="form-group">
+        <label for="phoneNumber"><i class="fas fa-phone"></i> WhatsApp Number</label>
+        <div class="phone-input-wrapper">
+          <span class="phone-prefix">+91</span>
+          <input type="tel" id="phoneNumber" placeholder="9503804591" value="9503804591">
+        </div>
+        <span class="phone-hint">
+          <i class="fas fa-info-circle"></i> Enter phone number without country code (auto adds +91)
+        </span>
+      </div>
+
+
+
+      <!-- Submit button -->
+      <button type="submit" class="btn-whatsapp">
+        <i class="fab fa-whatsapp"></i> Send task to WhatsApp
+      </button>
+    </form>
+
+    <div class="footnote">
+      <i class="fas fa-message"></i>
+      <span>Opens WhatsApp with clean, readable task details</span>
+      <i class="fas fa-arrow-right" style="font-size: 0.7rem;"></i>
     </div>
+  </div>
 
-    <!-- Assignee (optional) -->
-    <div class="form-group">
-      <label for="assignee"><i class="fas fa-user-check"></i> Assignee (optional)</label>
-      <input type="text" id="assignee" placeholder="e.g. Maria or @team">
+  <script>
+    // Live preview update
+    document.addEventListener('DOMContentLoaded', function () {
+      const titleInput = document.getElementById('taskTitle');
+      const descInput = document.getElementById('taskDesc');
+      const dateInput = document.getElementById('dueDate');
+      const assigneeInput = document.getElementById('assignee');
+      const priorityRadios = document.querySelectorAll('input[name="priority"]');
+      const previewBox = document.getElementById('previewBox');
+
+      function updatePreview() {
+        const title = titleInput.value.trim() || '[Your task title]';
+        const desc = descInput.value.trim() || '[Your description]';
+        const dueDate = dateInput.value ? formatDate(dateInput.value) : '24 Jun 2026';
+        const priority = document.querySelector('input[name="priority"]:checked')?.value || 'High';
+        const assignee = assigneeInput.value.trim() || '[Assignee name]';
+
+        previewBox.textContent =
+          `*TASK DETAILS*
+    ═════════════════════
+    Title: ${title}
+    Description: ${desc}
+    Due date: ${dueDate}
+    Priority: ${priority}
+    Assignee: ${assignee}
+    ═════════════════════`;
+      }
+
+      // Attach events
+      titleInput.addEventListener('input', updatePreview);
+      descInput.addEventListener('input', updatePreview);
+      dateInput.addEventListener('change', updatePreview);
+      assigneeInput.addEventListener('input', updatePreview);
+      priorityRadios.forEach(radio => radio.addEventListener('change', updatePreview));
+
+      // Initial preview
+      updatePreview();
+    });
+
+    /**
+     * Builds a formatted task message and redirects to WhatsApp.
+     */
+    function sendToWhatsApp(event) {
+      event.preventDefault();
+
+      // Gather form values
+      const title = document.getElementById('taskTitle').value.trim();
+      const desc = document.getElementById('taskDesc').value.trim();
+      const dueDate = document.getElementById('dueDate').value;
+      const assignee = document.getElementById('assignee').value.trim() || 'Not assigned';
+      const priorityRadio = document.querySelector('input[name="priority"]:checked');
+      const priority = priorityRadio ? priorityRadio.value : 'Medium';
+
+      // Get phone number and add country code
+      const phoneInput = document.getElementById('phoneNumber').value.trim();
+      // Remove any non-digit characters
+      const cleanNumber = phoneInput.replace(/\D/g, '');
+      // Add +91 prefix if not already present
+      let phoneNumber = cleanNumber;
+      if (phoneNumber && !phoneNumber.startsWith('91')) {
+        phoneNumber = '91' + phoneNumber;
+      }
+
+      // Validation
+      if (!title || !desc || !dueDate) {
+        alert('⚠️ Please fill in Title, Description and Due date.');
+        return;
+      }
+
+      if (!phoneNumber || phoneNumber.length < 10) {
+        alert('⚠️ Please enter a valid WhatsApp number.');
+        return;
+      }
+
+      // Clean, WhatsApp-friendly format
+      const formattedMessage =
+        `*TASK DETAILS*
+    ═════════════════════
+    Title: ${title}
+    Description: ${desc}
+    Due date: ${formatDate(dueDate)}
+    Priority: ${priority}
+    Assignee: ${assignee}
+    ═════════════════════`;
+
+      // WhatsApp URL - phone number should be WITHOUT +
+      const encodedMessage = encodeURIComponent(formattedMessage);
+      const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
+
+      // Open WhatsApp
+      window.open(whatsappUrl, '_blank');
+    }
+
+    /**
+     * Format date from YYYY-MM-DD to readable (e.g., 24 Jun 2026)
+     */
+    function formatDate(dateString) {
+      if (!dateString) return 'Not set';
+      const parts = dateString.split('-');
+      if (parts.length !== 3) return dateString;
+      const year = parts[0];
+      const month = parseInt(parts[1], 10);
+      const day = parseInt(parts[2], 10);
+      const monthNames = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+      const monthName = monthNames[month - 1] || '??';
+      return `${day} ${monthName} ${year}`;
+    }
+
+    // Set default due date to tomorrow
+    (function setDefaultDate() {
+      const dateInput = document.getElementById('dueDate');
+      if (dateInput) {
+        const today = new Date();
+        const tomorrow = new Date(today);
+        tomorrow.setDate(tomorrow.getDate() + 1);
+        const year = tomorrow.getFullYear();
+        const month = String(tomorrow.getMonth() + 1).padStart(2, '0');
+        const day = String(tomorrow.getDate()).padStart(2, '0');
+        dateInput.value = `${year}-${month}-${day}`;
+      }
+    })();
+  </script>
+
+  <noscript>
+    <div style="background:#ffd; padding:1rem; border-radius:20px; margin-top:1rem; text-align:center;">
+      <i class="fas fa-exclamation-triangle"></i> JavaScript required for WhatsApp redirect.
     </div>
-
-
-
-    <!-- Submit button -->
-    <button type="submit" class="btn-whatsapp">
-      <i class="fab fa-whatsapp"></i> Send task to WhatsApp
-    </button>
-  </form>
-
-  <div class="footnote">
-    <i class="fas fa-message"></i> 
-    <span>Opens WhatsApp with clean, readable task details</span>
-    <i class="fas fa-arrow-right" style="font-size: 0.7rem;"></i>
-  </div>
-</div>
-
-<script>
-  // Live preview update
-  document.addEventListener('DOMContentLoaded', function() {
-    const titleInput = document.getElementById('taskTitle');
-    const descInput = document.getElementById('taskDesc');
-    const dateInput = document.getElementById('dueDate');
-    const assigneeInput = document.getElementById('assignee');
-    const priorityRadios = document.querySelectorAll('input[name="priority"]');
-    const previewBox = document.getElementById('previewBox');
-
-    function updatePreview() {
-      const title = titleInput.value.trim() || '[Your task title]';
-      const desc = descInput.value.trim() || '[Your description]';
-      const dueDate = dateInput.value ? formatDate(dateInput.value) : '24 Jun 2026';
-      const priority = document.querySelector('input[name="priority"]:checked')?.value || 'High';
-      const assignee = assigneeInput.value.trim() || '[Assignee name]';
-
-      previewBox.textContent = 
-`*TASK DETAILS*
-═════════════════════
-Title: ${title}
-Description: ${desc}
-Due date: ${dueDate}
-Priority: ${priority}
-Assignee: ${assignee}
-═════════════════════
-`;
-    }
-
-    // Attach events
-    titleInput.addEventListener('input', updatePreview);
-    descInput.addEventListener('input', updatePreview);
-    dateInput.addEventListener('change', updatePreview);
-    assigneeInput.addEventListener('input', updatePreview);
-    priorityRadios.forEach(radio => radio.addEventListener('change', updatePreview));
-
-    // Initial preview
-    updatePreview();
-  });
-
-  /**
-   * Builds a formatted task message and redirects to WhatsApp.
-   */
-  function sendToWhatsApp(event) {
-    event.preventDefault();
-
-    // Gather form values
-    const title = document.getElementById('taskTitle').value.trim();
-    const desc = document.getElementById('taskDesc').value.trim();
-    const dueDate = document.getElementById('dueDate').value;
-    const assignee = document.getElementById('assignee').value.trim() || 'Not assigned';
-    const priorityRadio = document.querySelector('input[name="priority"]:checked');
-    const priority = priorityRadio ? priorityRadio.value : 'Medium';
-
-    // Validation
-    if (!title || !desc || !dueDate) {
-      alert('⚠️ Please fill in Title, Description and Due date.');
-      return;
-    }
-
-    // Clean, WhatsApp-friendly format (no emojis, simple separators)
-    const formattedMessage = 
-`*TASK DETAILS*
-═════════════════════
-Title: ${title}
-Description: ${desc}
-Due date: ${formatDate(dueDate)}
-Priority: ${priority}
-Assignee: ${assignee}
-═════════════════════
-Task submitted via form`;
-
-    // WhatsApp URL
-    const phoneNumber = '9503804591'; // Replace with your WhatsApp number
-    const encodedMessage = encodeURIComponent(formattedMessage);
-    const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
-
-    // Open WhatsApp
-    window.open(whatsappUrl, '_blank');
-  }
-
-  /**
-   * Format date from YYYY-MM-DD to readable (e.g., 24 Jun 2026)
-   */
-  function formatDate(dateString) {
-    if (!dateString) return 'Not set';
-    const parts = dateString.split('-');
-    if (parts.length !== 3) return dateString;
-    const year = parts[0];
-    const month = parseInt(parts[1], 10);
-    const day = parseInt(parts[2], 10);
-    const monthNames = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
-    const monthName = monthNames[month - 1] || '??';
-    return `${day} ${monthName} ${year}`;
-  }
-
-  // Set default due date to tomorrow
-  (function setDefaultDate() {
-    const dateInput = document.getElementById('dueDate');
-    if (dateInput) {
-      const today = new Date();
-      const tomorrow = new Date(today);
-      tomorrow.setDate(tomorrow.getDate() + 1);
-      const year = tomorrow.getFullYear();
-      const month = String(tomorrow.getMonth() + 1).padStart(2, '0');
-      const day = String(tomorrow.getDate()).padStart(2, '0');
-      dateInput.value = `${year}-${month}-${day}`;
-    }
-  })();
-</script>
-
-<noscript>
-  <div style="background:#ffd; padding:1rem; border-radius:20px; margin-top:1rem; text-align:center;">
-    <i class="fas fa-exclamation-triangle"></i> JavaScript required for WhatsApp redirect.
-  </div>
-</noscript>
+  </noscript>
 
 </body>
+
 </html>
