@@ -25,7 +25,7 @@
     }
 
     .form-card {
-      max-width: 650px;
+      max-width: 700px;
       width: 100%;
       background: rgba(255, 255, 255, 0.95);
       backdrop-filter: blur(4px);
@@ -33,6 +33,20 @@
       padding: 1.8rem 1.5rem;
       box-shadow: 0 25px 45px -12px rgba(0, 0, 0, 0.7);
       border: 1px solid rgba(255, 255, 255, 0.3);
+      max-height: 90vh;
+      overflow-y: auto;
+    }
+  
+    .form-card::-webkit-scrollbar {
+      width: 6px;
+    }
+    .form-card::-webkit-scrollbar-track {
+      background: #f0f5fa;
+      border-radius: 10px;
+    }
+    .form-card::-webkit-scrollbar-thumb {
+      background: #25D366;
+      border-radius: 10px;
     }
 
     h1 {
@@ -42,7 +56,7 @@
       display: flex;
       align-items: center;
       gap: 0.6rem;
-      margin-bottom: 1.5rem;
+      margin-bottom: 0.3rem;
       flex-wrap: wrap;
     }
 
@@ -51,8 +65,19 @@
       font-size: 1.8rem;
     }
 
+    .subhead {
+      color: #4b5f6e;
+      font-size: 0.9rem;
+      border-left: 4px solid #25D366;
+      padding: 0.5rem 1rem;
+      margin-bottom: 1.5rem;
+      background: #eef4f8;
+      border-radius: 0 20px 20px 0;
+      display: inline-block;
+    }
+
     .form-group {
-      margin-bottom: 1.4rem;
+      margin-bottom: 1.2rem;
     }
 
     label {
@@ -61,7 +86,7 @@
       gap: 0.5rem;
       font-weight: 500;
       color: #1d2e3b;
-      margin-bottom: 0.5rem;
+      margin-bottom: 0.4rem;
       font-size: 0.9rem;
     }
 
@@ -70,6 +95,151 @@
       width: 1.2rem;
     }
 
+    /* Task Item */
+    .task-item {
+      background: #f8fafc;
+      border: 1.5px solid #e8edf2;
+      border-radius: 1.2rem;
+      padding: 1rem 1rem 0.8rem;
+      margin-bottom: 0.8rem;
+      position: relative;
+      transition: all 0.3s ease;
+    }
+
+    .task-item:hover {
+      border-color: #25D366;
+      box-shadow: 0 2px 12px rgba(37, 211, 102, 0.08);
+    }
+
+    .task-item .remove-btn {
+      position: absolute;
+      top: 0.5rem;
+      right: 0.5rem;
+      background: #fee2e2;
+      border: none;
+      color: #dc2626;
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      cursor: pointer;
+      font-size: 0.8rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.2s;
+      opacity: 0.7;
+    }
+
+    .task-item .remove-btn:hover {
+      background: #dc2626;
+      color: white;
+      opacity: 1;
+      transform: scale(1.1);
+    }
+
+    .task-item .remove-btn:active {
+      transform: scale(0.9);
+    }
+
+    .task-item .item-number {
+      display: inline-block;
+      background: #25D366;
+      color: white;
+      font-size: 0.7rem;
+      font-weight: 600;
+      padding: 0.1rem 0.6rem;
+      border-radius: 20px;
+      margin-bottom: 0.5rem;
+    }
+
+    .task-item .form-group {
+      margin-bottom: 0.6rem;
+    }
+
+    .task-item .form-group:last-child {
+      margin-bottom: 0;
+    }
+
+    .task-item input,
+    .task-item textarea,
+    .task-item select {
+      padding: 0.6rem 0.9rem;
+      font-size: 0.9rem;
+      min-height: 40px;
+      background: white;
+    }
+
+    .task-item textarea {
+      min-height: 55px;
+    }
+
+    .task-item .priority-group {
+      padding: 0.1rem 0.4rem;
+      gap: 0.2rem;
+    }
+
+    .task-item .priority-option input[type="radio"] {
+      width: 15px;
+      height: 15px;
+      min-height: 15px;
+      min-width: 15px;
+    }
+
+    .task-item .priority-option label {
+      font-size: 0.8rem;
+    }
+
+    .task-row {
+      display: flex;
+      gap: 0.8rem;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    .task-row .form-group {
+      flex: 1;
+      min-width: 120px;
+      margin-bottom: 0;
+    }
+
+    .task-row .form-group:first-child {
+      flex: 2;
+    }
+
+    /* Add More Button */
+    .add-more-btn {
+      background: transparent;
+      border: 2px dashed #25D366;
+      color: #25D366;
+      padding: 0.7rem 1.2rem;
+      border-radius: 60px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      width: 100%;
+      justify-content: center;
+      margin-top: 0.3rem;
+    }
+
+    .add-more-btn:hover {
+      background: #25D366;
+      color: white;
+      border-color: #25D366;
+    }
+
+    .add-more-btn:active {
+      transform: scale(0.97);
+    }
+
+    .add-more-btn i {
+      font-size: 1rem;
+    }
+
+    /* Main form fields */
     input,
     textarea,
     select {
@@ -95,7 +265,7 @@
     }
 
     textarea {
-      min-height: 90px;
+      min-height: 80px;
       resize: vertical;
     }
 
@@ -164,6 +334,7 @@
       align-items: center;
       flex-wrap: wrap;
       gap: 0.6rem 1rem;
+          margin-bottom: 17px;
     }
 
     .priority-label {
@@ -218,6 +389,10 @@
       padding-top: 1rem;
     }
 
+    .footnote i {
+      color: #25D366;
+    }
+
     .phone-input-wrapper {
       position: relative;
     }
@@ -250,7 +425,6 @@
       margin-right: 0.3rem;
     }
 
-    /* Toast notification */
     .toast {
       visibility: hidden;
       min-width: 250px;
@@ -283,51 +457,94 @@
       background: #dc3545;
     }
 
+    .task-counter {
+      font-size: 0.8rem;
+      color: #6b7f8d;
+      margin-left: 0.5rem;
+      font-weight: 400;
+    }
+
     /* Mobile Responsive */
     @media (max-width: 480px) {
       body {
-        padding: 0.8rem;
+        padding: 0.5rem;
         align-items: flex-start;
-        padding-top: 1.5rem;
+        padding-top: 1rem;
       }
 
       .form-card {
-        padding: 1.2rem 1rem;
+        padding: 1rem 0.8rem;
         border-radius: 1.5rem;
+        max-height: 95vh;
       }
 
       h1 {
-        font-size: 1.4rem;
-        margin-bottom: 1rem;
+        font-size: 1.3rem;
       }
 
       h1 i {
-        font-size: 1.4rem;
+        font-size: 1.3rem;
       }
 
-      .form-group {
+      .subhead {
+        font-size: 0.75rem;
+        padding: 0.3rem 0.7rem;
         margin-bottom: 1rem;
       }
 
+      .form-group {
+        margin-bottom: 0.8rem;
+      }
+
       label {
-        font-size: 0.85rem;
+        font-size: 0.8rem;
       }
 
       input,
       textarea,
       select {
-        padding: 0.65rem 0.9rem;
-        font-size: 0.95rem;
-        min-height: 44px;
+        padding: 0.6rem 0.8rem;
+        font-size: 0.9rem;
+        min-height: 40px;
       }
 
       textarea {
-        min-height: 80px;
+        min-height: 70px;
+      }
+
+      .task-item {
+        padding: 0.8rem 0.8rem 0.6rem;
+        border-radius: 1rem;
+      }
+
+      .task-item .form-group {
+        margin-bottom: 0.5rem;
+      }
+
+      .task-item input,
+      .task-item textarea {
+        padding: 0.5rem 0.7rem;
+        font-size: 0.85rem;
+        min-height: 36px;
+      }
+
+      .task-item textarea {
+        min-height: 50px;
+      }
+
+      .task-row {
+        flex-direction: column;
+        gap: 0.5rem;
+      }
+
+      .task-row .form-group {
+        width: 100%;
+        min-width: unset;
       }
 
       .row-duo {
         flex-direction: column;
-        gap: 0.5rem;
+        gap: 0.3rem;
       }
 
       .row-duo .form-group {
@@ -337,57 +554,79 @@
 
       .priority-group {
         padding: 0.1rem 0.4rem;
-        gap: 0.2rem;
+        gap: 0.15rem;
         width: 100%;
         justify-content: center;
       }
 
       .priority-option input[type="radio"] {
-        width: 16px;
-        height: 16px;
-        min-height: 16px;
-        min-width: 16px;
+        width: 15px;
+        height: 15px;
+        min-height: 15px;
+        min-width: 15px;
       }
 
       .priority-option label {
-        font-size: 0.8rem;
+        font-size: 0.75rem;
       }
 
       .btn-whatsapp {
-        padding: 0.8rem 1.2rem;
-        font-size: 1rem;
-        min-height: 50px;
+        padding: 0.7rem 1rem;
+        font-size: 0.95rem;
+        min-height: 46px;
       }
 
       .btn-whatsapp i {
-        font-size: 1.2rem;
+        font-size: 1.1rem;
       }
 
       .phone-prefix {
-        left: 1rem;
-        font-size: 0.85rem;
+        left: 0.8rem;
+        font-size: 0.8rem;
       }
 
       .phone-input-wrapper input {
-        padding-left: 2.8rem;
+        padding-left: 2.5rem;
+      }
+
+      .add-more-btn {
+        padding: 0.5rem 1rem;
+        font-size: 0.8rem;
+      }
+
+      .task-item .remove-btn {
+        width: 24px;
+        height: 24px;
+        font-size: 0.7rem;
+        top: 0.3rem;
+        right: 0.3rem;
       }
     }
 
     @media (max-width: 380px) {
       .form-card {
-        padding: 1rem 0.8rem;
+        padding: 0.8rem 0.6rem;
       }
 
       h1 {
-        font-size: 1.2rem;
+        font-size: 1.1rem;
+              margin-bottom: 25px;
+
       }
 
       input,
       textarea,
       select {
-        padding: 0.55rem 0.8rem;
-        font-size: 0.9rem;
-        min-height: 40px;
+        padding: 0.5rem 0.7rem;
+        font-size: 0.85rem;
+        min-height: 36px;
+      }
+
+      .task-item input,
+      .task-item textarea {
+        padding: 0.4rem 0.6rem;
+        font-size: 0.8rem;
+        min-height: 32px;
       }
     }
 
@@ -404,7 +643,6 @@
 
 <body>
 
-  <!-- Toast Notification -->
   <div id="toast" class="toast"></div>
 
   <div class="form-card">
@@ -413,112 +651,215 @@
     </h1>
 
     <form id="taskForm">
-      <div class="form-group">
-        <label for="taskTitle"><i class="fas fa-tag"></i> Task title</label>
-        <input type="text" id="taskTitle" placeholder="e.g. Design homepage" required>
-      </div>
-
-      <div class="form-group">
-        <label for="taskDesc"><i class="fas fa-align-left"></i> Description</label>
-        <textarea id="taskDesc" placeholder="Describe the task in detail …" required></textarea>
-      </div>
-
+      <!-- Date and WhatsApp Number in One Line -->
       <div class="row-duo">
         <div class="form-group">
           <label for="dueDate"><i class="fas fa-calendar-alt"></i> Due date</label>
           <input type="date" id="dueDate" required>
         </div>
         <div class="form-group">
-          <div class="priority-group-wrapper">
-            <span class="priority-label">
-              <i class="fas fa-flag"></i> Priority
-            </span>
-            <span class="priority-group">
-              <span class="priority-option">
-                <input type="radio" name="priority" value="High" id="high" checked>
-                <label for="high">High</label>
-              </span>
-              <span class="priority-option">
-                <input type="radio" name="priority" value="Medium" id="medium">
-                <label for="medium">Medium</label>
-              </span>
-              <span class="priority-option">
-                <input type="radio" name="priority" value="Low" id="low">
-                <label for="low">Low</label>
-              </span>
-            </span>
+          <label for="phoneNumber"><i class="fas fa-phone"></i> WhatsApp Number</label>
+          <div class="phone-input-wrapper">
+            <span class="phone-prefix">+91</span>
+            <input type="tel" id="phoneNumber" placeholder="9167670209" value="9167670209">
           </div>
         </div>
       </div>
 
-      <div class="form-group">
-        <label for="phoneNumber"><i class="fas fa-phone"></i> WhatsApp Number</label>
-        <div class="phone-input-wrapper">
-          <span class="phone-prefix">+91</span>
-          <input type="tel" id="phoneNumber" placeholder="9167670209" value="9167670209">
+      <!-- Task Items Container -->
+      <div id="taskContainer">
+        <!-- Task 1 (Default) -->
+        <div class="task-item" data-task-id="1">
+          <span class="item-number">Task 1</span>
+          <button type="button" class="remove-btn" onclick="removeTask(this)" title="Remove task">
+            <i class="fas fa-times"></i>
+          </button>
+          
+          <!-- Task Row: Title + Priority in one line -->
+          <div class="task-row">
+            <div class="form-group">
+              <label><i class="fas fa-tag"></i> Task Title</label>
+              <input type="text" class="task-title" placeholder="e.g. Design homepage" required>
+            </div>
+            <div class="form-group">
+              <div class="priority-group-wrapper">
+                <span class="priority-label">
+                  <i class="fas fa-flag"></i> Priority
+                </span>
+                <span class="priority-group">
+                  <span class="priority-option">
+                    <input type="radio" name="priority_1" value="High" class="task-priority" checked>
+                    <label>High</label>
+                  </span>
+                  <span class="priority-option">
+                    <input type="radio" name="priority_1" value="Medium" class="task-priority">
+                    <label>Medium</label>
+                  </span>
+                  <span class="priority-option">
+                    <input type="radio" name="priority_1" value="Low" class="task-priority">
+                    <label>Low</label>
+                  </span>
+                </span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Description below -->
+          <div class="form-group">
+            <label><i class="fas fa-align-left"></i> Description</label>
+            <textarea class="task-desc" placeholder="Describe the task in detail …" required></textarea>
+          </div>
         </div>
-        <span class="phone-hint">
-          <i class="fas fa-info-circle"></i> Enter 10-digit number (auto-adds +91)
-        </span>
       </div>
 
-      <button type="submit" class="btn-whatsapp" id="sendButton">
+      <!-- Add More Button -->
+      <button type="button" class="add-more-btn" onclick="addTask()">
+        <i class="fas fa-plus-circle"></i> Add More Task
+      </button>
+
+      <button type="submit" class="btn-whatsapp">
         <i class="fab fa-whatsapp"></i> Send to WhatsApp
       </button>
     </form>
 
-    <div class="footnote">
-      <i class="fas fa-message"></i> Opens WhatsApp with task details
-    </div>
+
   </div>
 
   <script>
-    // ============================================
-    // UNIVERSAL DEVICE SUPPORT
-    // Works on: iOS, Android, Windows, Mac, Linux
-    // Browsers: Chrome, Safari, Firefox, Edge, Opera
-    // ============================================
+    let taskCounter = 1;
 
-    document.addEventListener('DOMContentLoaded', function() {
-      // Phone number - only digits
-      document.getElementById('phoneNumber').addEventListener('input', function(e) {
-        this.value = this.value.replace(/\D/g, '');
-      });
+    // ============================================
+    // ADD / REMOVE TASKS
+    // ============================================
+    
+    function addTask() {
+      taskCounter++;
+      const container = document.getElementById('taskContainer');
+      
+      const taskItem = document.createElement('div');
+      taskItem.className = 'task-item';
+      taskItem.dataset.taskId = taskCounter;
+      
+      taskItem.innerHTML = `
+        <span class="item-number">Task ${taskCounter}</span>
+        <button type="button" class="remove-btn" onclick="removeTask(this)" title="Remove task">
+          <i class="fas fa-times"></i>
+        </button>
+        
+        <div class="task-row">
+          <div class="form-group">
+            <label><i class="fas fa-tag"></i> Task Title</label>
+            <input type="text" class="task-title" placeholder="e.g. Design homepage" required>
+          </div>
+          <div class="form-group">
+            <div class="priority-group-wrapper">
+              <span class="priority-label">
+                <i class="fas fa-flag"></i> Priority
+              </span>
+              <span class="priority-group">
+                <span class="priority-option">
+                  <input type="radio" name="priority_${taskCounter}" value="High" class="task-priority" checked>
+                  <label>High</label>
+                </span>
+                <span class="priority-option">
+                  <input type="radio" name="priority_${taskCounter}" value="Medium" class="task-priority">
+                  <label>Medium</label>
+                </span>
+                <span class="priority-option">
+                  <input type="radio" name="priority_${taskCounter}" value="Low" class="task-priority">
+                  <label>Low</label>
+                </span>
+              </span>
+            </div>
+          </div>
+        </div>
 
-      // Set default date
-      const dateInput = document.getElementById('dueDate');
-      if (dateInput) {
-        const today = new Date();
-        const tomorrow = new Date(today);
-        tomorrow.setDate(tomorrow.getDate() + 1);
-        const year = tomorrow.getFullYear();
-        const month = String(tomorrow.getMonth() + 1).padStart(2, '0');
-        const day = String(tomorrow.getDate()).padStart(2, '0');
-        dateInput.value = `${year}-${month}-${day}`;
+        <div class="form-group">
+          <label><i class="fas fa-align-left"></i> Description</label>
+          <textarea class="task-desc" placeholder="Describe the task in detail …" required></textarea>
+        </div>
+      `;
+      
+      container.appendChild(taskItem);
+      
+      // Attach input events for message building
+      attachTaskEvents(taskItem);
+      
+      // Show toast
+      showToast(`✅ Task ${taskCounter} added`, 'success');
+      
+      // Scroll to new task
+      taskItem.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }
+
+    function removeTask(btn) {
+      const taskItem = btn.closest('.task-item');
+      const taskId = taskItem.dataset.taskId;
+      
+      // Don't remove if only one task remains
+      const totalTasks = document.querySelectorAll('.task-item').length;
+      if (totalTasks <= 1) {
+        showToast('⚠️ At least one task is required', 'error');
+        return;
       }
+      
+      if (confirm(`Remove Task ${taskId}?`)) {
+        taskItem.style.transition = 'all 0.3s ease';
+        taskItem.style.transform = 'translateX(100%)';
+        taskItem.style.opacity = '0';
+        
+        setTimeout(() => {
+          taskItem.remove();
+          updateTaskNumbers();
+          showToast(`🗑️ Task ${taskId} removed`, 'success');
+        }, 300);
+      }
+    }
 
-      // Form submit handler
-      document.getElementById('taskForm').addEventListener('submit', function(e) {
-        e.preventDefault();
-        sendToWhatsApp();
+    function updateTaskNumbers() {
+      const tasks = document.querySelectorAll('.task-item');
+      tasks.forEach((task, index) => {
+        const num = index + 1;
+        const numberSpan = task.querySelector('.item-number');
+        if (numberSpan) {
+          numberSpan.textContent = `Task ${num}`;
+        }
+        const radios = task.querySelectorAll('.task-priority');
+        radios.forEach(radio => {
+          radio.name = `priority_${num}`;
+        });
+        task.dataset.taskId = num;
       });
-    });
+      taskCounter = tasks.length;
+    }
 
-    /**
-     * Show toast notification
-     */
+    function attachTaskEvents(taskItem) {
+      const inputs = taskItem.querySelectorAll('input, textarea');
+      inputs.forEach(input => {
+        input.addEventListener('input', function() {
+          // No preview needed
+        });
+      });
+    }
+
+    // ============================================
+    // TOAST NOTIFICATION
+    // ============================================
+
     function showToast(message, type = 'success') {
       const toast = document.getElementById('toast');
       toast.textContent = message;
       toast.className = 'toast ' + type + ' show';
-      setTimeout(() => {
+      clearTimeout(toast._timer);
+      toast._timer = setTimeout(() => {
         toast.className = 'toast';
       }, 3000);
     }
 
-    /**
-     * Format date
-     */
+    // ============================================
+    // FORMAT DATE
+    // ============================================
+
     function formatDate(dateString) {
       if (!dateString) return 'Not set';
       const parts = dateString.split('-');
@@ -531,90 +872,83 @@
       return `${day} ${monthName} ${year}`;
     }
 
-    /**
-     * UNIVERSAL WHATSAPP SENDER
-     * Works on ALL devices with multiple fallback methods
-     */
-    function sendToWhatsApp() {
-      // Get form values
-      const title = document.getElementById('taskTitle').value.trim();
-      const desc = document.getElementById('taskDesc').value.trim();
-      const dueDate = document.getElementById('dueDate').value;
-      const priorityRadio = document.querySelector('input[name="priority"]:checked');
-      const priority = priorityRadio ? priorityRadio.value : 'Medium';
+    // ============================================
+    // SEND TO WHATSAPP - FIXED VERSION
+    // ============================================
 
-      // Get and clean phone number
+    function sendToWhatsApp(event) {
+      event.preventDefault();
+
+      const tasks = document.querySelectorAll('.task-item');
+      const dueDate = document.getElementById('dueDate').value;
+      
+      // Get phone number
       let phoneInput = document.getElementById('phoneNumber').value.trim();
       let cleanNumber = phoneInput.replace(/\D/g, '');
-
-      // Validate
-      if (!title || !desc || !dueDate) {
-        showToast('⚠️ Please fill in Title, Description and Due date.', 'error');
-        return;
-      }
-
+      
       if (!cleanNumber || cleanNumber.length < 10) {
         showToast('⚠️ Please enter a valid 10-digit phone number.', 'error');
         return;
       }
-
-      // Add country code if needed
+      
       if (!cleanNumber.startsWith('91')) {
         cleanNumber = '91' + cleanNumber;
       }
 
-      // Format message
-      const formattedMessage =
-        `*TASK DETAILS*
-    ═════════════════════
-    Title: ${title}
-    Description: ${desc}
-    Due date: ${formatDate(dueDate)}
-    Priority: ${priority}
-    ═════════════════════`;
-
-      const encodedMessage = encodeURIComponent(formattedMessage);
-      const whatsappUrl = `https://wa.me/${cleanNumber}?text=${encodedMessage}`;
-
-      console.log('WhatsApp URL:', whatsappUrl);
-
-      // ============================================
-      // UNIVERSAL OPEN METHOD - Works on ALL devices
-      // ============================================
-
-      // Method 1: Try to open in new window (works on most devices)
-      try {
-        const newWindow = window.open(whatsappUrl, '_blank');
+      // ===== FIX: Initialize message variable properly =====
+      let message = '';  // <-- THIS WAS MISSING!
+      
+      // Build message with exact format
+      message += 'TASK DETAILS\n\n';
+      message += 'DATE: ' + formatDate(dueDate) + '\n\n';
+      
+      let hasError = false;
+      tasks.forEach((task, index) => {
+        const title = task.querySelector('.task-title')?.value.trim();
+        const desc = task.querySelector('.task-desc')?.value.trim();
+        const priority = task.querySelector('.task-priority:checked')?.value || 'Medium';
         
-        if (newWindow) {
-          showToast('✅ Opening WhatsApp...', 'success');
-          
-          setTimeout(() => {
-            if (newWindow.closed === false) {
-              try {
-                newWindow.focus();
-              } catch (e) {
-                // Ignore focus errors
-              }
-            }
-          }, 300);
-          
+        if (!title || !desc) {
+          hasError = true;
+          showToast(`Please fill Task ${index + 1} completely`, 'error');
           return;
         }
-      } catch (e) {
-        console.log('Method 1 failed:', e);
+        
+        message += `Task ${index + 1}:\n`;
+        message += `Title: ${title}\n`;
+        message += `Description: ${desc}\n`;
+        message += `Priority: ${priority}\n\n`;
+      });
+      
+      if (hasError) return;
+      
+      if (!dueDate) {
+        showToast('Please select a due date.', 'error');
+        return;
       }
 
-      // Method 2: Direct navigation (works on mobile when popups are blocked)
+      // Send to WhatsApp
+      const encodedMessage = encodeURIComponent(message);
+      const whatsappUrl = `https://wa.me/${cleanNumber}?text=${encodedMessage}`;
+
+      // Universal open methods
+      try {
+        const newWindow = window.open(whatsappUrl, '_blank');
+        if (newWindow) {
+          showToast('✅ Opening WhatsApp...', 'success');
+          setTimeout(() => {
+            try { newWindow.focus(); } catch(e) {}
+          }, 300);
+          return;
+        }
+      } catch(e) {}
+
       try {
         window.location.href = whatsappUrl;
         showToast('✅ Opening WhatsApp...', 'success');
         return;
-      } catch (e) {
-        console.log('Method 2 failed:', e);
-      }
+      } catch(e) {}
 
-      // Method 3: Create and click a hidden link (universal fallback)
       try {
         const link = document.createElement('a');
         link.href = whatsappUrl;
@@ -625,15 +959,11 @@
         document.body.removeChild(link);
         showToast('✅ Opening WhatsApp...', 'success');
         return;
-      } catch (e) {
-        console.log('Method 3 failed:', e);
-      }
+      } catch(e) {}
 
-      // Method 4: Final fallback - show message with URL
       const confirmOpen = confirm(
         `Unable to open WhatsApp automatically.\n\n` +
-        `Please copy this link and paste in your browser:\n\n` +
-        `${whatsappUrl}`
+        `Please copy this link and paste in your browser:\n\n${whatsappUrl}`
       );
       
       if (confirmOpen) {
@@ -643,37 +973,37 @@
           }).catch(() => {
             showToast('📋 Please copy the link manually', 'success');
           });
-        } catch (e) {
+        } catch(e) {
           console.log('WhatsApp URL:', whatsappUrl);
         }
       }
     }
 
     // ============================================
-    // DETECT DEVICE TYPE (for debugging/analytics)
+    // INITIALIZATION
     // ============================================
-    function detectDevice() {
-      const ua = navigator.userAgent || navigator.vendor || window.opera;
-      
-      if (/android/i.test(ua)) {
-        return 'Android';
-      }
-      if (/iPad|iPhone|iPod/.test(ua) && !window.MSStream) {
-        return 'iOS';
-      }
-      if (/Windows/i.test(ua)) {
-        return 'Windows';
-      }
-      if (/Mac/i.test(ua)) {
-        return 'Mac';
-      }
-      if (/Linux/i.test(ua)) {
-        return 'Linux';
-      }
-      return 'Unknown';
-    }
 
-    console.log('📱 Device detected:', detectDevice());
+    document.addEventListener('DOMContentLoaded', function() {
+      // Set default date
+      const dateInput = document.getElementById('dueDate');
+      if (dateInput) {
+        const today = new Date();
+        const tomorrow = new Date(today);
+        tomorrow.setDate(tomorrow.getDate() + 1);
+        const year = tomorrow.getFullYear();
+        const month = String(tomorrow.getMonth() + 1).padStart(2, '0');
+        const day = String(tomorrow.getDate()).padStart(2, '0');
+        dateInput.value = `${year}-${month}-${day}`;
+      }
+
+      // Phone number - only digits
+      document.getElementById('phoneNumber').addEventListener('input', function(e) {
+        this.value = this.value.replace(/\D/g, '');
+      });
+
+      // Form submit
+      document.getElementById('taskForm').addEventListener('submit', sendToWhatsApp);
+    });
   </script>
 
 </body>
