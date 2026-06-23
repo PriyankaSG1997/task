@@ -42,24 +42,13 @@
       display: flex;
       align-items: center;
       gap: 0.6rem;
-      margin-bottom: 0.3rem;
+      margin-bottom: 1.5rem;
       flex-wrap: wrap;
     }
 
     h1 i {
       color: #25D366;
       font-size: 1.8rem;
-    }
-
-    .subhead {
-      color: #4b5f6e;
-      font-size: 0.9rem;
-      border-left: 4px solid #25D366;
-      padding: 0.5rem 1rem;
-      margin-bottom: 1.8rem;
-      background: #eef4f8;
-      border-radius: 0 20px 20px 0;
-      display: inline-block;
     }
 
     .form-group {
@@ -227,38 +216,6 @@
       color: #6b7f8d;
       border-top: 1px solid #e2ebf2;
       padding-top: 1rem;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      gap: 0.4rem;
-      flex-wrap: wrap;
-    }
-
-    .footnote i {
-      color: #25D366;
-    }
-
-    .preview-box {
-      background: #f0f5fa;
-      border-radius: 16px;
-      padding: 0.8rem 1rem;
-      margin-top: 0.5rem;
-      border-left: 4px solid #25D366;
-      font-family: 'Courier New', monospace;
-      font-size: 0.8rem;
-      white-space: pre-wrap;
-      color: #1d2e3b;
-      max-height: 180px;
-      overflow-y: auto;
-    }
-
-    .preview-label {
-      font-size: 0.75rem;
-      color: #4b5f6e;
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-      margin-bottom: 0.3rem;
     }
 
     .phone-input-wrapper {
@@ -341,16 +298,11 @@
 
       h1 {
         font-size: 1.4rem;
+        margin-bottom: 1rem;
       }
 
       h1 i {
         font-size: 1.4rem;
-      }
-
-      .subhead {
-        font-size: 0.8rem;
-        padding: 0.4rem 0.8rem;
-        margin-bottom: 1.2rem;
       }
 
       .form-group {
@@ -411,12 +363,6 @@
         font-size: 1.2rem;
       }
 
-      .preview-box {
-        font-size: 0.75rem;
-        padding: 0.6rem 0.8rem;
-        max-height: 150px;
-      }
-
       .phone-prefix {
         left: 1rem;
         font-size: 0.85rem;
@@ -465,9 +411,6 @@
     <h1>
       <i class="fab fa-whatsapp"></i> Task · WhatsApp
     </h1>
-    <div class="subhead">
-      <i class="fas fa-arrow-right" style="margin-right: 8px;"></i> Works on any device
-    </div>
 
     <form id="taskForm">
       <div class="form-group">
@@ -509,11 +452,6 @@
       </div>
 
       <div class="form-group">
-        <label for="assignee"><i class="fas fa-user-check"></i> Assignee (optional)</label>
-        <input type="text" id="assignee" placeholder="e.g. Maria or @team">
-      </div>
-
-      <div class="form-group">
         <label for="phoneNumber"><i class="fas fa-phone"></i> WhatsApp Number</label>
         <div class="phone-input-wrapper">
           <span class="phone-prefix">+91</span>
@@ -524,15 +462,13 @@
         </span>
       </div>
 
-
       <button type="submit" class="btn-whatsapp" id="sendButton">
         <i class="fab fa-whatsapp"></i> Send to WhatsApp
       </button>
     </form>
 
     <div class="footnote">
-      <i class="fas fa-globe"></i>
-      <span>Works on all devices · Desktop · Mobile · Tablet</span>
+      <i class="fas fa-message"></i> Opens WhatsApp with task details
     </div>
   </div>
 
@@ -543,56 +479,22 @@
     // Browsers: Chrome, Safari, Firefox, Edge, Opera
     // ============================================
 
-    // Live preview update
     document.addEventListener('DOMContentLoaded', function() {
-      const titleInput = document.getElementById('taskTitle');
-      const descInput = document.getElementById('taskDesc');
-      const dateInput = document.getElementById('dueDate');
-      const assigneeInput = document.getElementById('assignee');
-      const priorityRadios = document.querySelectorAll('input[name="priority"]');
-      const previewBox = document.getElementById('previewBox');
-
-      function updatePreview() {
-        const title = titleInput.value.trim() || '[Your task title]';
-        const desc = descInput.value.trim() || '[Your description]';
-        const dueDate = dateInput.value ? formatDate(dateInput.value) : '24 Jun 2026';
-        const priority = document.querySelector('input[name="priority"]:checked')?.value || 'High';
-        const assignee = assigneeInput.value.trim() || '[Assignee name]';
-
-        previewBox.textContent =
-          `*TASK DETAILS*
-    ═════════════════════
-    Title: ${title}
-    Description: ${desc}
-    Due date: ${dueDate}
-    Priority: ${priority}
-    Assignee: ${assignee}
-    ═════════════════════`;
-      }
-
-      titleInput.addEventListener('input', updatePreview);
-      descInput.addEventListener('input', updatePreview);
-      dateInput.addEventListener('change', updatePreview);
-      assigneeInput.addEventListener('input', updatePreview);
-      priorityRadios.forEach(radio => radio.addEventListener('change', updatePreview));
-
-      updatePreview();
-
       // Phone number - only digits
       document.getElementById('phoneNumber').addEventListener('input', function(e) {
         this.value = this.value.replace(/\D/g, '');
       });
 
       // Set default date
-      const dateInput2 = document.getElementById('dueDate');
-      if (dateInput2) {
+      const dateInput = document.getElementById('dueDate');
+      if (dateInput) {
         const today = new Date();
         const tomorrow = new Date(today);
         tomorrow.setDate(tomorrow.getDate() + 1);
         const year = tomorrow.getFullYear();
         const month = String(tomorrow.getMonth() + 1).padStart(2, '0');
         const day = String(tomorrow.getDate()).padStart(2, '0');
-        dateInput2.value = `${year}-${month}-${day}`;
+        dateInput.value = `${year}-${month}-${day}`;
       }
 
       // Form submit handler
@@ -638,7 +540,6 @@
       const title = document.getElementById('taskTitle').value.trim();
       const desc = document.getElementById('taskDesc').value.trim();
       const dueDate = document.getElementById('dueDate').value;
-      const assignee = document.getElementById('assignee').value.trim() || 'Not assigned';
       const priorityRadio = document.querySelector('input[name="priority"]:checked');
       const priority = priorityRadio ? priorityRadio.value : 'Medium';
 
@@ -670,11 +571,12 @@
     Description: ${desc}
     Due date: ${formatDate(dueDate)}
     Priority: ${priority}
-    Assignee: ${assignee}
     ═════════════════════`;
 
       const encodedMessage = encodeURIComponent(formattedMessage);
       const whatsappUrl = `https://wa.me/${cleanNumber}?text=${encodedMessage}`;
+
+      console.log('WhatsApp URL:', whatsappUrl);
 
       // ============================================
       // UNIVERSAL OPEN METHOD - Works on ALL devices
@@ -685,10 +587,8 @@
         const newWindow = window.open(whatsappUrl, '_blank');
         
         if (newWindow) {
-          // Window opened successfully
           showToast('✅ Opening WhatsApp...', 'success');
           
-          // For mobile: if window doesn't focus properly, try fallback
           setTimeout(() => {
             if (newWindow.closed === false) {
               try {
@@ -702,7 +602,7 @@
           return;
         }
       } catch (e) {
-        // If window.open fails, continue to next method
+        console.log('Method 1 failed:', e);
       }
 
       // Method 2: Direct navigation (works on mobile when popups are blocked)
@@ -711,7 +611,7 @@
         showToast('✅ Opening WhatsApp...', 'success');
         return;
       } catch (e) {
-        // Continue to next method
+        console.log('Method 2 failed:', e);
       }
 
       // Method 3: Create and click a hidden link (universal fallback)
@@ -726,7 +626,7 @@
         showToast('✅ Opening WhatsApp...', 'success');
         return;
       } catch (e) {
-        // Continue to next method
+        console.log('Method 3 failed:', e);
       }
 
       // Method 4: Final fallback - show message with URL
@@ -737,16 +637,13 @@
       );
       
       if (confirmOpen) {
-        // Try to copy to clipboard
         try {
           navigator.clipboard.writeText(whatsappUrl).then(() => {
             showToast('📋 Link copied to clipboard!', 'success');
           }).catch(() => {
-            // If clipboard fails, just show the link
             showToast('📋 Please copy the link manually', 'success');
           });
         } catch (e) {
-          // If all fails, just show the link in console
           console.log('WhatsApp URL:', whatsappUrl);
         }
       }
@@ -776,9 +673,7 @@
       return 'Unknown';
     }
 
-    // Log device for debugging (optional)
     console.log('📱 Device detected:', detectDevice());
-    console.log('🌐 Browser:', navigator.userAgent);
   </script>
 
 </body>
